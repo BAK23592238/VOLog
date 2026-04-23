@@ -2,7 +2,7 @@ import sqlite3
 import os
 
 # specifying the name of the volog database
-DB_PATH = os.path.join(os.path.dirname(__file__), '..', 'volog.db')
+DB_PATH = os.path.join(os.path.dirname(__file__), '..', '..', 'volog.db')
 
 # getting a connection and 
 def get_connection():
