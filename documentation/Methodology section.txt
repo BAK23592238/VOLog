@@ -1,0 +1,81 @@
+Methodology section
+References:
+
+Which model am I using?
+
+
+
+How much training data I need to use?
+
+https://blog.roboflow.com/how-much-training-data/
+
+
+Problems:
+people of colour will not be seen if they are similar shades to the shadow/headrest etc.
+the "empty seat" bias, if my dataset only has pictures of cars with people in then, the ai will start hallucinating people in empty cars because it thinks a car must have an occupant, I need empty cars as well
+the A-Pillar blocks faces
+the angle in the pictures is not set
+big cars are not coming in frame, often falling short of the windshield entirely
+the dataset doesn't look ethnically sourced... (after labelling 150 pics)
+cars in the dark show no occupancy even with naked eye
+the dataset was reduced significantly after discussing with my supervisor, sameena, about the night pictures. She said don't use the pictures which you can't see the people with naked eye
+the pictures are blurry
+headrest trap - the headrests look similar to occupants, even to naked eye
+A-Pillar occlusion - its covering faces, important identifiable features
+there is already lots of glare / tint, augmentation would make it noisy a lot
+the rear passengers have been totally ignored, excluding some which can be seen from the front
+I couldn't find outer-car IR infared pictures otherwise I would have used those, unless i can make those with synthetic data but then i wouldnt have an accurate training set
+
+could using a pretrained model on car and person standalone objects be used and maybe the dataset shows them as interacting objects, and behind the windshield or augmented to give that effect, could this be more efficient then this unethical dataset
+
+augmenting during training would be better than hardcoded augmentation because this way each epoch will have slightly different training set and make the model robust..
+
+I don't have the computing budget required for this. my laptop runs on an intel gpu/cpu essentially an apu sharing 8gb of soldered ram
+
+I will use google collab or Kaggle kernels, and roboflow
+
+am I falling victim to sunk cost fallacy? am I labelling this dataset because I really need it or because I have done over 150 pictures already and that work will go to waste if I pick another method like making a synthetic dataset?
+
+my model will give results using loss functions, evaluation metrics, confidence scores, bounding boxes, confusion matrices but both false positives and false negatives would be critical in my project as this is a entry AND (future) exit logging system
+
+if I abandon this dataset labelling to use synthetic data, I can effectively tackle the main problems with real world datasets, the privacy, lighting and the labelling:
+in a simulation the computer will already know where the passengers are, I don't have to label by hand, and the system creates them with 100% precision
+I wont have to worry about GDPR or facial privacy laws because the people aren't real people, theyre 3d digital assets
+with glare and window tints, I can specifically tell the computer to generate an amount of data with 50% tint, I cant do that with real fleet of cars
+with synthetic data I can also randomise skin tones, and customise people, to ensure the model learns to look for human silhouettes rather than just light skinned faces in the sun
+I can make IR data as well
+While IR imagery would significantly improve occupancy detection through window tint, public datasets for external-facing IR vehicle interiors are scarce. Synthetic data generation offers a viable path to simulate NIR/LWIR environments, providing 'perfect' ground-truth labels without the privacy or hardware costs of a real-world IR camera fleet
+I can make the background a field (the setting of this project)
+
+
+what I can do now is use a hybrid approach:
+the real data will teach the model about real world noise, like dirt on windshields, rain, weird camera sensors
+the synthetic data will teach the model edge cases like a child in a car seat, passengers reclining etc.
+or
+I can use the real world data as a training set to prove that the synthetic data actually does work
+
+where can I get this data?
+NIVIDA Omniverse / drive sim
+CARLA
+unity computer vision
+
+transfer learning, take a model trained on coco, fine tune it on my occupancy data
+and for training:
+"Logic Layer: You can even use a "Crop and Classify" method.
+
+Model A finds the Windshield.
+
+The system crops that windshield.
+
+Model B (specifically trained on your synthetic/real hybrid data) counts people inside that crop.
+This is often much more accurate than trying to see a tiny face from a wide-angle shot."
+
+
+---
+
+not using the synthetic data approach because inaccuracy and lack of real factors, can be used for future works
+
+take the background out of the confusion matrixs
+
+add accuracy 
+n
