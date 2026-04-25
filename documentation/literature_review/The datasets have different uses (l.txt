@@ -1,0 +1,20 @@
+The datasets have different uses (licence plate, car models, and just people as well) training all of these would take too much time to train for FYP.
+
+This dataset
+
+https://universe.roboflow.com/guangyuan-liu/vehicle-yhaia
+ ONLY 477 IMAGES
+
+https://universe.roboflow.com/duha-m5pxa/vehicle-brjvf
+ONLY 51 images
+
+Assume always 1 person in car? No
+
+
+https://universe.roboflow.com/subhash-pathirana-cdryb/vehicle-tbqmw/browse?queryText=&pageSize=50&startingIndex=0&browseQuery=true
+
+very good annotated
+
+
+Not licence plate
+just the occupancy detection
