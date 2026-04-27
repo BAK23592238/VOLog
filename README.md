@@ -73,7 +73,7 @@ Image Upload → Flask Controller → YOLOv8 Inference (headcount)
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/VOLog.git
+git clone https://github.com/BAK23592238/VOLog.git
 cd VOLog
 ```
 
