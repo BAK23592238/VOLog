@@ -17,8 +17,13 @@ def run_occupancy(image_path):
             headcount += 1
     return headcount
 
+# function to get number plate from image
 def run_alpr(image_path):
+
+    # opens the image as binary read mode
     with open(image_path, 'rb') as f:
+
+        # sends request through PR API
         response = requests.post(
             'https://api.platerecognizer.com/v1/plate-reader/',
             headers={'Authorization': f'Token {PLATE_RECOGNIZER_TOKEN}'},
