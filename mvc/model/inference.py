@@ -2,6 +2,7 @@ import requests
 from ultralytics import YOLO
 import os
 
+# model instatiation at module level
 MODEL_PATH = os.path.join(os.path.dirname(__file__), '..', '..', 'weights', 'best.pt')
 PLATE_RECOGNIZER_TOKEN = 'dddd344672634e818bf2105b96ce2d4f0c341a80'
 
