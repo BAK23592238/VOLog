@@ -29,9 +29,16 @@ def run_alpr(image_path):
             headers={'Authorization': f'Token {PLATE_RECOGNIZER_TOKEN}'},
             files={'upload': f}
         )
+    # converts the raw response into a dictionary
     data = response.json()
+
+    # checks if any plates were actually found in the results
     if data.get('results'):
+
+        # extrates plates if detected and converts to uppercase
         return data['results'][0]['plate'].upper()
+    
+    # returns a default message if no plate was found
     return 'UNDETECTED'
 
 def process_image(image_path):
