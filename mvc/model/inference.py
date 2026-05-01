@@ -1,10 +1,13 @@
 import requests
 from ultralytics import YOLO
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # model instatiation at module level
 MODEL_PATH = os.path.join(os.path.dirname(__file__), '..', '..', 'weights', 'best.pt')
-PLATE_RECOGNIZER_TOKEN = '_________________________________________________________'
+PLATE_RECOGNIZER_TOKEN = os.getenv("PLATE_REC_TOKEN")
 
 model = YOLO(MODEL_PATH)
 
