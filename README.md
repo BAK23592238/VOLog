@@ -7,7 +7,7 @@
 ## 📌 What It Does
 
 - **Occupancy Detection** — YOLOv8s model counts visible passengers through the windscreen of each vehicle
-- **Number Plate Recognition** — Plate Recognizer API reads and returns the UK number plate string
+- **Number Plate Recognition** — Plate Recognizer API reads and returns the number plate string
 - **Centralised Logging** — Every entry (plate, headcount, gate, timestamp) is written to a SQLite database
 - **Live Dashboard** — React frontend polls the Flask backend every 5 seconds and displays the entry log in real time
 - **Gate Filtering** — Filter the log by gate number for targeted oversight
