@@ -14,12 +14,15 @@ export default function App() {
   const [feedback, setFeedback] = useState(null)
   const [feedbackType, setFeedbackType] = useState("success")
 
+  // fetch all entries from backend 
   const fetchEntries = async () => {
     try {
       const res = await axios.get(`${API}/api/entries`)
       setEntries(res.data)
+
     } catch (e) {
       console.error(e)
+      
     } finally {
       setLoading(false)
     }
@@ -27,29 +30,42 @@ export default function App() {
 
   useEffect(() => {
     fetchEntries()
+
+    // auto refresh entries every 5 seconds ----------------------------------------------REFRESHER---------------------------
     const interval = setInterval(fetchEntries, 5000)
     return () => clearInterval(interval)
   }, [])
 
+  // handle file input change
   const handleFile = (e) => {
     const file = e.target.files[0]
     setImage(file)
     setImageName(file?.name || null)
   }
 
+  // submit image and gate id to backend
   const handleSubmit = async () => {
     if (!image) return
+
     setSubmitting(true)
     setFeedback(null)
+
     const formData = new FormData()
     formData.append("image", image)
     formData.append("gate_id", gateId)
+
     try {
       const res = await axios.post(`${API}/api/entry`, formData)
+
+      // show success message using returned data 
       setFeedback(`LOGGED — ${res.data.number_plate} · ${res.data.headcount} occupant(s) · Gate ${gateId}`)
       setFeedbackType("success")
+
+      // reset form state
       setImage(null)
       setImageName(null)
+
+      // refresh table after submission
       fetchEntries()
     } catch {
       setFeedback("Submission failed. Check server connection.")
@@ -59,7 +75,10 @@ export default function App() {
     }
   }
 
+  // build date filter options dynamically from data
   const gates = ["all", ...new Set(entries.map(e => String(e.gate_id)))]
+
+  // filter based on selected gate 
   const filtered = gateFilter === "all" ? entries : entries.filter(e => String(e.gate_id) === gateFilter)
 
   return (
