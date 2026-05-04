@@ -199,8 +199,8 @@ curl http://127.0.0.1:5000/api/entries
 
 **Hala Bakhtiar**
 BSc Software Engineering — University of Roehampton
-Final Year Project, 2026
-Supervisor: Dr Sameena
+Final Year Project, 2025
+Supervisor: Dr Sameena Naaz
 
 ---
 
