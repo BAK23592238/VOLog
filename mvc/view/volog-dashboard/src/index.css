@@ -1,35 +1,51 @@
 :root {
+  /* base theme variables, light mode for visibility */
   --text: #6b6375;
   --text-h: #08060d;
   --bg: #fff;
   --border: #e5e4e7;
   --code-bg: #f4f3ec;
+
+  /* accent colour system used for highlights and actions */
   --accent: #aa3bff;
   --accent-bg: rgba(170, 59, 255, 0.1);
   --accent-border: rgba(170, 59, 255, 0.5);
+
+  /* Ui surface colours */
   --social-bg: rgba(244, 243, 236, 0.5);
+
+  /* flobal shadow style acroll components */
   --shadow:
     rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
 
+  /* font stacks */
   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
   --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
 
+  /* base typography settings applied globally */
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
+
+  /* enables automatic dark/light form control styling */
   color-scheme: light dark;
+
   color: var(--text);
   background: var(--bg);
+
+  /* improves text rendering quality */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
+  /* responsive base font size */
   @media (max-width: 1024px) {
     font-size: 16px;
   }
 }
 
+/* dark mode overrides */
 @media (prefers-color-scheme: dark) {
   :root {
     --text: #9ca3af;
@@ -37,14 +53,18 @@
     --bg: #16171d;
     --border: #2e303a;
     --code-bg: #1f2028;
+
     --accent: #c084fc;
     --accent-bg: rgba(192, 132, 252, 0.15);
     --accent-border: rgba(192, 132, 252, 0.5);
     --social-bg: rgba(47, 48, 58, 0.5);
+
+    /* stronger shadow for dark UI depth */
     --shadow:
       rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
   }
 
+  /* invert icons for visibility in dark mode */
   #social .button-icon {
     filter: invert(1) brightness(2);
   }
@@ -59,13 +79,17 @@ body {
   max-width: 100%;
   margin: 0 auto;
   text-align: center;
+  
+  /* visual seperation from page edges */
   border-inline: 1px solid var(--border);
+  
   min-height: 100svh;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
 }
 
+/* heading hirearchy styling */
 h1,
 h2 {
   font-family: var(--heading);
@@ -95,6 +119,7 @@ p {
   margin: 0;
 }
 
+/* shared monospace styling for code-like elements */
 code,
 .counter {
   font-family: var(--mono);
@@ -103,6 +128,7 @@ code,
   color: var(--text-h);
 }
 
+/* inline code styling */
 code {
   font-size: 15px;
   line-height: 135%;
