@@ -201,8 +201,10 @@ export default function App() {
                         <span style={styles.badge2}>{entry.headcount}</span>
                       </td>
                       <td style={styles.td}>Gate {entry.gate_id}</td>
-                      <td style={styles.tdMono}>{entry.timestamp}</td>
-                    </tr>
+                      <td style={styles.tdMono}>
+                        {new Date(entry.timestamp + "Z").toLocaleString()}
+                      </td>                   
+                      </tr>
                   ))}
                 </tbody>
               </table>
